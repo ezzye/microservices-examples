@@ -8,9 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ellioe03 on 27/06/2017.
- */
 @Named
 @Path("/")
 public class StockRest {
@@ -36,20 +33,11 @@ public class StockRest {
     }
 
 
-//    @GET
-////    @Consumes("application/json")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("updateStock")
-//    public OrderResponse updateStock(@QueryParam("orderId") Long orderId, @QueryParam("productCode") String productCode, @QueryParam("qty") Integer qty){
-//        return null;
-//    }
-//
-
     @POST @Consumes("application/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Path("updateStockNew")
     public OrderResponse updateStock(final OrderRequest req){
-        System.out.print("blasadsdasda");
+        System.out.print("This will produce order response");
         return null;
     }
 
@@ -84,6 +72,7 @@ public class StockRest {
             this.success = success;
         }
     }
+
     @XmlRootElement
     public static class OrderRequest {
         @XmlElement
@@ -91,7 +80,6 @@ public class StockRest {
         @XmlElement  Long orderId;
         @XmlElement
         int qty;
-
     }
 
 }

@@ -1,8 +1,6 @@
 microservices/ApplicationConfig.class
 microservices/Stock.class
-microservices/Receiver.class
 microservices/StockRest$OrderRequest.class
-microservices/Email.class
 microservices/StockRest.class
 microservices/StockRest$OrderResponse.class
 microservices/Application.class

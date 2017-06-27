@@ -7,9 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Named;
 
-/**
- * Created by ellioe03 on 27/06/2017.
- */
+
 @Configuration
 public class ApplicationConfig {
     @Named

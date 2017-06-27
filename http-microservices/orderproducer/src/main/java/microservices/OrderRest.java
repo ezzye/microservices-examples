@@ -14,9 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ellioe03 on 27/06/2017.
- */
+
 @Named
 @Path("/")
 public class OrderRest {
@@ -27,6 +25,7 @@ public class OrderRest {
     private RestTemplate restTemplate;
 
     private static List<Order> Orders = new ArrayList<Order>();
+
     static {
         Order order1 = new Order();
         order1.setOrderId(1);
@@ -54,6 +53,18 @@ public class OrderRest {
         return Orders;
     }
 
+    @GET
+    @Path("order")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Order getOrder(@QueryParam("id") long id) {
+        Order or = null;
+        for (Order o : Orders) {
+            if (o.getOrderId() == id)
+                or = o;
+        }
+        return or;
+    }
+
 
     /****** MAIN ONE ******/
     @POST
@@ -69,27 +80,15 @@ public class OrderRest {
                 orderResp = restTemplate.exchange(
                         "http://localhost:8082/updateStock?orderId={orderId}&productCode={productCode}&qty={qty}", org.springframework.http.HttpMethod.GET, myEnt, ProcessOrderResponse.class, new Long(1), "Prod1", new Integer(2));
             } catch (Exception e) {
-                System.out.print("Error blah blah");
+                System.out.print("Error returned from updateStock");
             }
-            System.out.print("sdfsdfsdfs");
+            System.out.print("updateStock working");
         } else {
             return null;
         }
         return null;
     }
 
-
-    @GET
-    @Path("order")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Order getOrder(@QueryParam("id") long id) {
-        Order or = null;
-        for (Order o : Orders) {
-            if (o.getOrderId() == id)
-                or = o;
-        }
-        return or;
-    }
 
     @XmlRootElement
     public static class ProcessOrderRequest {
@@ -98,7 +97,6 @@ public class OrderRest {
         @XmlElement  Long orderId;
         @XmlElement
         int qty;
-
     }
 
 

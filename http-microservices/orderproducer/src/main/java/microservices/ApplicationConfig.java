@@ -7,9 +7,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Named;
 
-/**
- * Created by ellioe03 on 27/06/2017.
- */
+//Set port using VM Options  -Dserver.port=8081
+
+
 @Configuration
 public class ApplicationConfig {
     @Named
